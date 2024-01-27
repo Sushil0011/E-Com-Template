@@ -10,9 +10,7 @@ const page = async ({ params }: { params: { product: string } }) => {
 
     return res.json();
   }
-
   const data = await getData();
-  console.log(data);
 
   return (
     <div className="max-w-7xl mx-auto  flex items-center gap-10 justify-center  min-h-screen">

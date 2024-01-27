@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getData } from "@/utils/getData";
-import Header from "./components/header";
+import Header from "./components/Layout/header";
+import Footer from "./components/Layout/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,11 @@ export default async function RootLayout({
   const categories: any = await getData(
     "https://api.escuelajs.co/api/v1/categories"
   );
-
   return (
     <html lang="en">
-      <Header categories={categories} />
-      <body className={inter.className}>{children}</body>
+      <Header categories={categories as any} />
+      {children}
+      <Footer />
     </html>
   );
 }
