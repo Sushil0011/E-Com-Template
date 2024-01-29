@@ -4,12 +4,18 @@ import toast from "react-hot-toast";
 const AddToCartButton = ({ item }: { item: {} }) => {
   const addItemsToCart = async (e: any) => {
     e.preventDefault();
-    try {
-      await axios.post("https://fakestoreapi.com/carts", item);
-      toast.success("Item added to cart");
-    } catch (error) {
-      toast.error("Failed to add Item in cart");
-    }
+    const localItemsString = localStorage.getItem("cartItems");
+    const localItems = localItemsString ? JSON.parse(localItemsString) : [];
+    localItems.push(item);
+    localStorage.setItem("cartItems", JSON.stringify(localItems));
+    toast.success("Item added to cart");
+
+    // try {
+    //   await axios.post("https://fakestoreapi.com/carts", item);
+    //   toast.success("Item added to cart");
+    // } catch (error) {
+    //   toast.error("Failed to add Item in cart");
+    // }
   };
   return (
     <button
