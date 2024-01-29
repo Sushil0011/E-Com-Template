@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getData } from "@/utils/getData";
-import Header from "./components/Layout/header";
-import Footer from "./components/Layout/footer";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Header categories={categories as string[]} />
+        <Toaster position="top-center" />
         {children}
         <Footer />
       </body>

@@ -1,3 +1,4 @@
+import AddToCartButton from "@/app/components/addToCartButton";
 const page = async ({ params }: { params: { product: string } }) => {
   async function getData() {
     const res = await fetch(
@@ -17,7 +18,7 @@ const page = async ({ params }: { params: { product: string } }) => {
       <div className="block">
         <img src={data?.image} alt="image" />
         <div className="flex gap-5 mt-5 justify-between">
-          {data?.images?.map((url: any) => (
+          {data?.images?.map((url: string) => (
             <img src={url} alt="image" className="h-[120px] w-[120px]" />
           ))}
         </div>
@@ -25,9 +26,7 @@ const page = async ({ params }: { params: { product: string } }) => {
       <div className="lg:max-w-[800px] text-gray-600  font-bold space-y-5">
         <p>{data?.title}</p>
         <span className="block">${data?.price}</span>
-        <button className="border border-gray-600 px-5 py-2 rounded">
-          ADD TO BAG
-        </button>
+        <AddToCartButton item={data as object} />
 
         <p
           className="font-medium
