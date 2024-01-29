@@ -1,7 +1,7 @@
 const page = async ({ params }: { params: { product: string } }) => {
   async function getData() {
     const res = await fetch(
-      `https://api.escuelajs.co/api/v1/products/${params.product}`
+      `https://fakestoreapi.com/products/${params.product}`
     );
 
     if (!res.ok) {
@@ -15,7 +15,7 @@ const page = async ({ params }: { params: { product: string } }) => {
   return (
     <div className="max-w-7xl mx-auto  flex items-center gap-10 justify-center  min-h-screen">
       <div className="block">
-        <img src={data?.images[0]} alt="image" />
+        <img src={data?.image} alt="image" />
         <div className="flex gap-5 mt-5 justify-between">
           {data?.images?.map((url: any) => (
             <img src={url} alt="image" className="h-[120px] w-[120px]" />
@@ -26,7 +26,7 @@ const page = async ({ params }: { params: { product: string } }) => {
         <p>{data?.title}</p>
         <span className="block">${data?.price}</span>
         <button className="border border-gray-600 px-5 py-2 rounded">
-          Buy Now
+          ADD TO BAG
         </button>
 
         <p

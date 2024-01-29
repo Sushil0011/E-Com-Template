@@ -18,12 +18,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const categories: any = await getData(
-    "https://api.escuelajs.co/api/v1/categories"
+    "https://fakestoreapi.com/products/categories"
   );
   return (
     <html lang="en">
       <body>
-        <Header categories={categories as any} />
+        <Header categories={categories as string[]} />
         {children}
         <Footer />
       </body>

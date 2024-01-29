@@ -6,23 +6,26 @@ import {
   XMarkIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
-import { getData } from "@/utils/getData";
-import axios from "axios";
 import Link from "next/link";
-interface NavigationItem {
+
+type NavigationItem = {
   name: string;
   href: string;
-}
+};
 
 const navigation: NavigationItem[] = [
-  { name: "Clothes", href: "/clothes" },
-  { name: "Electronics", href: "/electronics" },
-  { name: "Shoes", href: "/shoes" },
+  { name: "electronics", href: "/clothes" },
+  { name: "jewelery", href: "/jewelery" },
+  { name: "men's clothing", href: "/men's clothing" },
   { name: "Furniture", href: "/furniture" },
   { name: "Miscellaneous", href: "/miscellaneous" },
 ];
 
-const Header: React.FC<{ categories: any }> = ({ categories }) => {
+type AppProps = {
+  categories: string[];
+};
+
+const Header = ({ categories }: { categories: string[] }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const handleCartOpen = () => {
@@ -54,13 +57,13 @@ const Header: React.FC<{ categories: any }> = ({ categories }) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
+          {categories.map((item) => (
             <Link
-              href={item.href}
-              key={item.name}
-              className="text-sm font-semibold leading-6 text-white"
+              href={`/${item}`}
+              key={item}
+              className="text-sm font-semibold leading-6 text-white capitalize"
             >
-              {item.name}
+              {item}
             </Link>
           ))}
         </div>
