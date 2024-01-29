@@ -22,9 +22,11 @@ export default async function RootLayout({
   );
   return (
     <html lang="en">
-      <Header categories={categories as any} />
-      {children}
-      <Footer />
+      <body>
+        <Header categories={categories as any} />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
