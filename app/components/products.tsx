@@ -4,17 +4,6 @@ import Link from "next/link";
 import AddToCartButton from "./addToCartButton";
 import { useState } from "react";
 
-// type Item = {
-//   id: number;
-//   price: number;
-//   description: string;
-//   rating: number[];
-//   title: string;
-//   image: string;
-//   category: string;
-// };
-
-// const Products = ({ data, category }: { data: []; category: string }) => {
 type Item = {
   id: number;
   price: number;
