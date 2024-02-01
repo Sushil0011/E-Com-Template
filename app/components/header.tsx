@@ -31,6 +31,13 @@ const Header = ({ categories }: { categories: string[] }) => {
   const handleCartOpen = () => {
     setCartOpen(true);
   };
+  const [cartCount, setCartCounts] = useState([]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cartItems");
+    const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+    setCartCounts(parsedCart);
+  }, []);
 
   return (
     <header className="bg-gray-600">
@@ -38,14 +45,14 @@ const Header = ({ categories }: { categories: string[] }) => {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <Link href="/" className="flex lg:flex-1">
+        <a href="/" className="flex lg:flex-1">
           <span className="sr-only">Your Company</span>
           <img
             className="h-8 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
             alt=""
           />
-        </Link>
+        </a>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -58,13 +65,13 @@ const Header = ({ categories }: { categories: string[] }) => {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {categories.map((item) => (
-            <Link
+            <a
               href={`/${item}`}
               key={item}
               className="text-sm font-semibold leading-6 text-white capitalize"
             >
               {item}
-            </Link>
+            </a>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 gap-2 lg:justify-end text-sm font-semibold leading-6 text-white">
@@ -72,12 +79,19 @@ const Header = ({ categories }: { categories: string[] }) => {
             {" "}
             Log in <span aria-hidden="true">&rarr;</span>
           </p>
-          <Link
-            href="/cart"
-            className="flex items-center space-x-2 cursor-pointer"
-          >
-            <ShoppingCartIcon className="h-5 w-5 text-white" />
-          </Link>
+          <div className="relative">
+            <a
+              href="/cart"
+              className="flex items-center space-x-2 cursor-pointer"
+            >
+              <ShoppingCartIcon className="h-5 w-5 text-white" />
+              {cartCount.length > 0 && (
+                <span className="absolute top-[-16px] right-0 text-base text-[#ff0000]">
+                  {cartCount.length}
+                </span>
+              )}
+            </a>
+          </div>
         </div>
       </nav>
       <Dialog

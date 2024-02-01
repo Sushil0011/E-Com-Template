@@ -5,7 +5,9 @@ const AddToCartButton = ({ item }: { item: {} }) => {
   const addItemsToCart = async (e: any) => {
     e.preventDefault();
     const localItemsString = localStorage.getItem("cartItems");
+
     const localItems = localItemsString ? JSON.parse(localItemsString) : [];
+
     localItems.push(item);
     localStorage.setItem("cartItems", JSON.stringify(localItems));
     toast.success("Item added to cart");
