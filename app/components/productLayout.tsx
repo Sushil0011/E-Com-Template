@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PlusIcon } from "@heroicons/react/20/solid";
-import Example from "@/app/components/product";
+import Product from "@/app/components/product";
 import Breadcrumb from "./breadcrumb";
 
 const filters = [
@@ -238,7 +238,7 @@ export default function ProductLayout({
                 </form>
               </div>
             </aside>
-            <Example data={data.products} />
+            <Product data={data.products} />
             {/* <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
               {/* Your content */}
             {/* </div>  */}
