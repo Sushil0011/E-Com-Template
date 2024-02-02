@@ -20,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const categories: any = await getData(
-    "https://dummyjson.com/products/categories"
+    "https://api.tanntrim.com/static-categories/"
   );
   return (
     <html lang="en">

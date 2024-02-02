@@ -8,24 +8,12 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-type NavigationItem = {
+type Item = {
   name: string;
-  href: string;
+  slug: string;
 };
 
-const navigation: NavigationItem[] = [
-  { name: "electronics", href: "/clothes" },
-  { name: "jewelery", href: "/jewelery" },
-  { name: "men's clothing", href: "/men's clothing" },
-  { name: "Furniture", href: "/furniture" },
-  { name: "Miscellaneous", href: "/miscellaneous" },
-];
-
-type AppProps = {
-  categories: string[];
-};
-
-const Header = ({ categories }: { categories: string[] }) => {
+const Header = ({ categories }: { categories: any }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const handleCartOpen = () => {
@@ -56,13 +44,13 @@ const Header = ({ categories }: { categories: string[] }) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {categories.slice(0, 6).map((item) => (
+          {categories.map((item: Item, i: number) => (
             <Link
-              href={`/${item}`}
-              key={item}
+              href={`/${item.slug}`}
+              key={i}
               className="text-sm font-semibold leading-6 text-white capitalize"
             >
-              {item}
+              {item.name}
             </Link>
           ))}
         </div>
@@ -106,14 +94,14 @@ const Header = ({ categories }: { categories: string[] }) => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/25">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
+                {/* {navigation.map((item) => (
                   <p
                     key={item.name}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800 cursor-pointer"
                   >
                     {item.name}
                   </p>
-                ))}
+                ))} */}
               </div>
               <div className="py-6">
                 <p
