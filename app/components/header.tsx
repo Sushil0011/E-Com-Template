@@ -31,7 +31,6 @@ const Header = ({ categories }: { categories: string[] }) => {
   const handleCartOpen = () => {
     setCartOpen(true);
   };
-
   return (
     <header className="bg-gray-600">
       <nav
@@ -57,7 +56,7 @@ const Header = ({ categories }: { categories: string[] }) => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {categories.map((item) => (
+          {categories.slice(0, 6).map((item) => (
             <Link
               href={`/${item}`}
               key={item}

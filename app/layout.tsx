@@ -5,6 +5,7 @@ import { getData } from "@/utils/getData";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { Toaster } from "react-hot-toast";
+import { MyContextProvider } from "@/app/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +20,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const categories: any = await getData(
-    "https://fakestoreapi.com/products/categories"
+    "https://dummyjson.com/products/categories"
   );
   return (
     <html lang="en">
       <body>
-        <Header categories={categories as string[]} />
-        <Toaster position="top-center" />
-        {children}
-        <Footer />
+        <MyContextProvider>
+          <Header categories={categories as string[]} />
+          <Toaster position="top-center" />
+          {children}
+          <Footer />
+        </MyContextProvider>
       </body>
     </html>
   );
