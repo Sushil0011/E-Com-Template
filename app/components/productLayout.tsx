@@ -58,7 +58,7 @@ export default function ProductLayout({
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   //resources/notifications.html#
 
-  app: return (
+  return (
     <div className="bg-white">
       <div>
         {/* Mobile filter dialog */}

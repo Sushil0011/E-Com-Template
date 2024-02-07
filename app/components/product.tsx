@@ -1,5 +1,6 @@
 import AddToCart from "./addToCart";
 import Price from "./price";
+import Link from "next/link";
 
 const products = [
   {
@@ -29,6 +30,7 @@ type Item = {
   subtitle: string;
   specialPrice: number;
   ribbon: string;
+  slug: string;
 };
 
 export default function Product({ data }: { data: [] }) {
@@ -37,7 +39,11 @@ export default function Product({ data }: { data: [] }) {
       <div className="mx-auto max-w-2xl px-4 sm:px-6  lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {data.map((product: Item) => (
-            <div key={product.id} className="group relative">
+            <Link
+              href={`/p/${product.slug}`}
+              key={product.id}
+              className="group relative"
+            >
               {product.ribbon && (
                 <div className="absolute bg-gray-600 text-white top-2 px-2.5 text-sm rounded-r">
                   {product.ribbon}
@@ -69,7 +75,7 @@ export default function Product({ data }: { data: [] }) {
                   &#x20B9; {product.price}
                 </p> */}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
